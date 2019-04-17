@@ -13,15 +13,12 @@ export default new Vuex.Store({
   mutations: {
     setUser(state, user) {
       state.user = user;
-      console.log("New User: " + user);
     },
     setPokemon(state, pokemon) {
       state.pokemon = pokemon;
-      console.log(pokemon);
     },
     setSelectedPokemon(state, selectedPokemon) {
       state.selectedPokemon = selectedPokemon;
-      console.log(selectedPokemon);
     },
   },
   actions: {
@@ -76,16 +73,14 @@ export default new Vuex.Store({
                 name
               }
             })
-            .catch(function (error) {
-              console.log(error);
-            });
-          console.log(pokemon[i]);
+            .catch(function (error) {});
         }
         context.commit('setPokemon', pokemon);
         let randomIndex = Math.floor(Math.random() * 4);
         context.commit('setSelectedPokemon', pokemon[randomIndex]);
         return "";
       } catch (error) {
+        return error.response.data.message;
         return "";
       }
     },
@@ -96,8 +91,7 @@ export default new Vuex.Store({
         context.commit('setUser', response.data);
         return "";
       } catch (error) {
-        console.log(error);
-        return "";
+        return error.response.data.message;
       }
     },
     async updateUserLoss(context) {
@@ -106,7 +100,7 @@ export default new Vuex.Store({
         let response = await axios.get("/api/users");
         context.commit('setUser', response.data);
       } catch (error) {
-        console.log(error);
+        return error.response.data.message;
         return "";
       }
     },

@@ -51,7 +51,7 @@ export default {
         if (this.error === "")
           this.$router.push('mypage');
       } catch (error) {
-        console.log(error);
+        return error.response.data.message;
       }
     }
   }
