@@ -81,7 +81,6 @@ export default new Vuex.Store({
         return "";
       } catch (error) {
         return error.response.data.message;
-        return "";
       }
     },
     async updateUserWin(context) {
@@ -101,7 +100,6 @@ export default new Vuex.Store({
         context.commit('setUser', response.data);
       } catch (error) {
         return error.response.data.message;
-        return "";
       }
     },
   }

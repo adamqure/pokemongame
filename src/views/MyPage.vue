@@ -38,7 +38,7 @@ export default {
       try {
         this.error = await this.$store.dispatch("logout");
       } catch (error) {
-        console.log(error);
+        return error.response.data.message;
       }
     },
   }

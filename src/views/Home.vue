@@ -32,12 +32,10 @@ export default {
   methods: {
     async pokemonChosen(pokemon) {
       if (pokemon.name === this.selectedPokemon.name) {
-        console.log("Correct Answer");
         //Show the Correct modal
         //Add user correct
         await this.$store.dispatch("updateUserWin");
       } else {
-        console.log("Incorrect Answer");
         //Show the incorrect modal
         //Add user incorrect
         await this.$store.dispatch("updateUserLoss");
