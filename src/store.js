@@ -73,7 +73,9 @@ export default new Vuex.Store({
                 name
               }
             })
-            .catch(function (error) {});
+            .catch(function (error) {
+              return error.response.data.message;
+            });
         }
         context.commit('setPokemon', pokemon);
         let randomIndex = Math.floor(Math.random() * 4);
